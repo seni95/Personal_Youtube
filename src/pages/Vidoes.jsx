@@ -9,7 +9,7 @@ export default function Vidoes() {
   const {keyword} = useParams();
   const {youtube} = useYoutubeApi();
   const {isloading,error,data:videos} = useQuery(
-    ['videos',keyword],async()=>youtube.search(keyword)); 
+    ['videos',keyword],async()=>youtube.search(keyword),{staleTime:1000*60}); 
   return (
     <div>
       {isloading && <p>loading</p>}
